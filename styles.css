@@ -1,0 +1,152 @@
+/* ── Google Fonts ── */
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;300;400&family=Cormorant:ital,wght@0,400;0,600;1,400&display=swap');
+
+:root {
+  --bg:      #f2f7f2;
+  --sage:    #7aab8a;
+  --sage2:   #a8c9b0;
+  --sage3:   #d4ead9;
+  --dark:    #2d4a35;
+  --mid:     #4e7a5c;
+  --soft:    #c8e0cc;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Josefin Sans', sans-serif;
+  background: var(--bg);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background:
+    radial-gradient(ellipse 65% 55% at 10% 15%, rgba(168,201,176,0.35) 0%, transparent 55%),
+    radial-gradient(ellipse 55% 65% at 90% 85%, rgba(122,171,138,0.25) 0%, transparent 55%),
+    radial-gradient(ellipse 70% 50% at 50% 50%, rgba(212,234,217,0.20) 0%, transparent 65%);
+  pointer-events: none; z-index: 0;
+}
+
+canvas#leaf-canvas {
+  position: fixed; inset: 0;
+  pointer-events: none; z-index: 1;
+}
+
+.container {
+  position: relative; z-index: 2;
+  max-width: 660px;
+  margin: 44px auto;
+  padding: 0 18px 60px;
+}
+
+/* ── Header ── */
+.header {
+  text-align: center;
+  padding: 38px 24px 30px;
+  background: rgba(255,255,255,0.75);
+  backdrop-filter: blur(12px);
+  border-radius: 20px 20px 0 0;
+  border: 1px solid rgba(122,171,138,0.3);
+  border-bottom: none;
+  position: relative;
+}
+
+.header::after {
+  content: '';
+  position: absolute; bottom: 0; left: 10%; width: 80%; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--sage2), transparent);
+}
+
+.leaf-row {
+  font-size: 20px; letter-spacing: 8px;
+  color: var(--sage); display: block; margin-bottom: 12px;
+}
+
+h1 {
+  font-family: 'Cormorant', serif;
+  font-size: 2.2rem; font-weight: 600;
+  color: var(--dark); letter-spacing: 2px;
+}
+
+h1 em { font-style: italic; color: var(--sage); }
+
+h2 {
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 200; font-size: 0.78rem;
+  letter-spacing: 5px; text-transform: uppercase;
+  color: var(--mid); margin-top: 8px;
+}
+
+/* ── Cards layout ── */
+.cards-wrap {
+  background: rgba(255,255,255,0.6);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(122,171,138,0.25);
+  border-top: none;
+  border-radius: 0 0 20px 20px;
+  padding: 18px 20px 24px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.time-card {
+  background: rgba(255,255,255,0.8);
+  border: 1px solid var(--soft);
+  border-radius: 12px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.time-card::before {
+  content: '';
+  position: absolute; left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--sage2);
+  border-radius: 3px 0 0 3px;
+  transition: background 0.2s;
+}
+
+.time-card.on-hour {
+  background: rgba(212,234,217,0.55);
+  border-color: var(--sage2);
+}
+
+.time-card.on-hour::before { background: var(--sage); }
+
+.time-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(122,171,138,0.18);
+  border-color: var(--sage2);
+}
+
+.card-time {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.68rem; font-weight: 400;
+  letter-spacing: 2.5px; text-transform: uppercase;
+  color: var(--sage);
+}
+
+.time-card.on-hour .card-time { color: var(--dark); font-weight: 400; }
+
+.card-event {
+  font-family: 'Cormorant', serif;
+  font-style: italic; font-size: 0.92rem;
+  color: rgba(45,74,53,0.45);
+  min-height: 20px;
+}
+
+/* ── Footer ── */
+.footer {
+  text-align: center; margin-top: 26px;
+  font-family: 'Cormorant', serif; font-style: italic;
+  color: var(--sage); font-size: 0.9rem; letter-spacing: 1px; opacity: 0.8;
+}
