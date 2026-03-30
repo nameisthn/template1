@@ -1,9 +1,3 @@
-/* ══════════════════════════════════════════
-   script5.js — Sage Green Timeline
-   2-column card grid + firefly animation
-   Timeline: 12:00 AM → 11:30 PM
-   ══════════════════════════════════════════ */
-
 /* ── Build 2-column card grid ── */
 (function buildTimeline() {
   const wrap = document.getElementById('cards-wrap');
